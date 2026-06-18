@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Threading;
 using CodexMonitorWidget.Services;
 using CodexMonitorWidget.Tray;
 
@@ -21,8 +20,6 @@ public partial class App : System.Windows.Application
         var mainWindow = new MainWindow();
         MainWindow = mainWindow;
         mainWindow.Show();
-
-        Dispatcher.BeginInvoke(Store.BeginInitialLoad, DispatcherPriority.Background);
     }
 
     protected override void OnExit(ExitEventArgs e)

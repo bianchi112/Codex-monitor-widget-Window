@@ -28,10 +28,6 @@ public sealed class CodexUsageStore : INotifyPropertyChanged
         _folderAccess = new CodexFolderAccess();
         _alwaysOnTop = LoadAlwaysOnTop();
         _folderAccess.RestoreSavedAccess();
-    }
-
-    public void BeginInitialLoad()
-    {
         StartIfReady();
     }
 
