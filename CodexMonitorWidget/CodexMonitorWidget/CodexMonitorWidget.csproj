@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>Assets\app-icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\app-icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+  <!-- Debug 빌드 시 트레이에 남아 있는 이전 실행 인스턴스가 exe 잠금(MSB3027)을 유발하지 않도록 정리 -->
+  <Target Name="StopRunningDebugInstance" BeforeTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+    <Exec Command="taskkill /F /IM CodexMonitorWidget.exe /T 2&gt;nul" IgnoreExitCode="true" />
+  </Target>
+
+</Project>
