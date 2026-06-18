@@ -1,2 +1,66 @@
-# Codex-monitor-widget-Window
-Codex-monitor-widget-Window
+# Codex Monitor Widget (Windows)
+
+Codex CLI 사용량을 화면 위젯과 시스템 트레이로 확인하는 Windows 앱입니다.
+
+---
+
+## 다운로드 및 설치
+
+https://github.com/bianchi112/Codex-monitor-widget-Window/releases/tag/v1.0.0
+
+1. 위의 **압축 파일(zip)** 을 받습니다.
+2. 원하는 폴더에 **압축을 풉니다.** (예: `C:\Tools\CodexMonitor\`)
+3. 압축을 푼 **폴더 안의 `CodexMonitorWidget.exe`** 를 실행합니다.
+
+> ⚠️ **exe 파일만 따로 복사하면 실행되지 않을 수 있습니다.**  
+> zip을 푼 **폴더 전체**를 그대로 두고 사용하세요.
+
+---
+
+## 실행 요구 사항
+
+- Windows 10 이상 (64비트)
+- [Codex CLI](https://github.com/openai/codex)를 사용한 적이 있어야 합니다. (`~/.codex` 로그 필요)
+- **별도 .NET 설치는 필요 없습니다.** (앱에 포함되어 있습니다)
+
+Codex 로그 기본 경로: %USERPROFILE%.codex\sessions
+
+
+`CODEX_HOME` 환경 변수를 쓰고 있다면 해당 경로를 사용합니다.
+
+---
+
+## 사용 방법
+
+1. `CodexMonitorWidget.exe`를 실행합니다.
+2. 처음 실행 시 `~/.codex` 폴더 접근이 필요할 수 있습니다. 안내에 따라 허용하거나 폴더를 선택합니다.
+3. 연결되면 **토큰 사용량**, **5시간/주간 게이지**, **최근 입력·모델·추론** 정보가 표시됩니다.
+4. Codex를 사용하면 위젯이 **자동으로 갱신**됩니다.
+
+### 트레이 아이콘
+
+- 창을 닫아도 앱은 **트레이**에 남습니다.
+- 트레이 아이콘 **더블클릭** → 위젯 다시 열기
+- 트레이 메뉴 **「종료」** → 앱 완전 종료
+
+### 옵션
+
+- **항상 위에 표시** — 다른 창 위에 고정
+- **새로고침** — 수동으로 데이터 다시 읽기
+
+---
+
+## 자주 묻는 질문
+
+**Q. 데이터가 안 보여요.**  
+Codex를 한 번 이상 실행했는지, `%USERPROFILE%\.codex\sessions` 폴더에 로그가 있는지 확인해 주세요.
+
+**Q. 첫 실행이 조금 느려요.**  
+앱에 런타임이 포함되어 있어 첫 실행 시 준비 시간이 걸릴 수 있습니다. 이후에는 보통 더 빨라집니다.
+
+**Q. Mac 버전도 있나요?**  
+macOS용 위젯은 별도 저장소에서 제공됩니다.
+
+---
+
+ 
