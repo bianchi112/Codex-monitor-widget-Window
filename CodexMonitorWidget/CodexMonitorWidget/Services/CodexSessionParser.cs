@@ -315,13 +315,30 @@ public static class CodexSessionParser
             if (!TryGetObject(json, "payload", out var payload))
                 continue;
 
-            payload.TryGetValue("model", out var modelObj);
-            payload.TryGetValue("effort", out var effortObj);
-            var model = modelObj as string;
-            var effort = effortObj as string;
+            TryGetString(payload, "model", out var model);
+            var effort = ParseReasoningEffort(payload);
 
-            if (model != null || effort != null)
+            if (!string.IsNullOrEmpty(model) || !string.IsNullOrEmpty(effort))
                 return new TurnContextInfo(model, effort);
+        }
+
+        return null;
+    }
+
+    private static string? ParseReasoningEffort(Dictionary<string, object?> payload)
+    {
+        if (TryGetString(payload, "effort", out var effort) && !string.IsNullOrEmpty(effort))
+            return effort;
+
+        if (TryGetString(payload, "reasoning_effort", out var direct) && !string.IsNullOrEmpty(direct))
+            return direct;
+
+        if (TryGetObject(payload, "collaboration_mode", out var collaboration) &&
+            TryGetObject(collaboration, "settings", out var settings) &&
+            TryGetString(settings, "reasoning_effort", out var nested) &&
+            !string.IsNullOrEmpty(nested))
+        {
+            return nested;
         }
 
         return null;
